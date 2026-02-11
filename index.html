@@ -5,18 +5,22 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Joyeux Anniversaire Maïmouna ❤️</title>
 
-    <!-- Confetti library via CDN (léger et rapide) -->
+    <!-- Confetti library via CDN -->
     <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.3/dist/confetti.browser.min.js"></script>
 
     <style>
         :root {
-            --pink-light: #ff758c;
-            --pink-dark: #ff7eb3;
+            --pink-light: #ff9ec1;
+            --pink-dark: #ff69b4;
             --pink-accent: #ff4e78;
             --pink-soft: #ffe6ec;
         }
 
-        * { margin: 0; padding: 0; box-sizing: border-box; }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
         body {
             background: linear-gradient(135deg, var(--pink-light), var(--pink-dark));
@@ -25,9 +29,33 @@
             text-align: center;
             min-height: 100vh;
             line-height: 1.6;
+            position: relative;
+            overflow-x: hidden;
+        }
+
+        /* Fond cœurs subtils */
+        .hearts-bg {
+            position: absolute;
+            inset: 0;
+            pointer-events: none;
+            opacity: 0.12;
+            background-image: 
+                radial-gradient(circle at 15% 25%, white 2px, transparent 2px),
+                radial-gradient(circle at 35% 75%, white 1.5px, transparent 1.5px),
+                radial-gradient(circle at 65% 35%, white 2px, transparent 2px),
+                radial-gradient(circle at 85% 65%, white 1.8px, transparent 1.8px);
+            background-size: 120px 120px;
+            animation: drift 35s linear infinite;
+        }
+
+        @keyframes drift {
+            0% { background-position: 0 0; }
+            100% { background-position: 150px 150px; }
         }
 
         .container {
+            position: relative;
+            z-index: 1;
             max-width: 800px;
             margin: 0 auto;
             padding: 60px 20px;
@@ -76,6 +104,7 @@
             opacity: 0.85;
         }
 
+        /* Animations */
         @keyframes fadeIn {
             from { opacity: 0; transform: translateY(20px); }
             to   { opacity: 1; transform: translateY(0); }
@@ -96,10 +125,12 @@
 
 <body>
 
+    <!-- Fond cœurs subtils -->
+    <div class="hearts-bg"></div>
+
     <div class="container">
         <main>
             <h1>Joyeux Anniversaire Mon Amour 🎉❤️</h1>
-            <img src="C:\Users\ThinkUP\Desktop\A" alt="Maïmouna ❤️" style="max-width: 100%; border-radius: 20px; margin: 30px auto; display: block; box-shadow: 0 10px 30px rgba(0,0,0,0.3);">
 
             <p>
                 Aujourd’hui est un jour très spécial, parce que c’est le jour où la personne la plus merveilleuse est née.<br><br>
@@ -134,7 +165,7 @@
 
     <script>
         function surprise() {
-            // Alert optionnel (tu peux le commenter si tu préfères juste les confettis)
+            // Alert
             alert("Tu es mon plus beau cadeau.\nJe t’aime infiniment Maïmouna Savané ❤️");
 
             // Confettis explosion principale
@@ -142,13 +173,13 @@
                 particleCount: 150,
                 spread: 70,
                 origin: { y: 0.6 },
-                colors: ['#ff758c', '#ff7eb3', '#ff4e78', '#ffe6ec', '#ffffff', '#ffd700'],
+                colors: ['#ff9ec1', '#ff69b4', '#ff4e78', '#ffe6ec', '#ffffff', '#ffd700'],
                 ticks: 300,
                 gravity: 0.5,
                 scalar: 1.2
             });
 
-            // Rafales latérales pour plus d'effet (optionnel)
+            // Rafales latérales
             setTimeout(() => {
                 confetti({ particleCount: 100, angle: 60, spread: 55, origin: { x: 0 } });
                 confetti({ particleCount: 100, angle: 120, spread: 55, origin: { x: 1 } });
