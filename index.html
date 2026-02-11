@@ -2,107 +2,158 @@
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
-    <title>Joyeux Anniversaire ❤️</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Joyeux Anniversaire Maïmouna ❤️</title>
+
+    <!-- Confetti library via CDN (léger et rapide) -->
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.3/dist/confetti.browser.min.js"></script>
 
     <style>
+        :root {
+            --pink-light: #ff758c;
+            --pink-dark: #ff7eb3;
+            --pink-accent: #ff4e78;
+            --pink-soft: #ffe6ec;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
         body {
-            margin: 0;
-            padding: 0;
-            background: linear-gradient(135deg, #ff758c, #ff7eb3);
-            font-family: 'Segoe UI', Tahoma, sans-serif;
+            background: linear-gradient(135deg, var(--pink-light), var(--pink-dark));
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             color: white;
             text-align: center;
+            min-height: 100vh;
+            line-height: 1.6;
         }
 
         .container {
-            padding: 60px 20px;
             max-width: 800px;
-            margin: auto;
+            margin: 0 auto;
+            padding: 60px 20px;
         }
 
         h1 {
             font-size: 3em;
+            margin-bottom: 0.5em;
             animation: fadeIn 2s ease-in-out;
         }
 
         p {
-            font-size: 1.2em;
+            font-size: 1.25em;
+            margin: 30px 0;
             line-height: 1.8;
-            margin-top: 30px;
-        }
-
-        button {
-            margin-top: 40px;
-            background: white;
-            color: #ff4e78;
-            border: none;
-            padding: 15px 35px;
-            font-size: 1.1em;
-            border-radius: 30px;
-            cursor: pointer;
-            transition: transform 0.2s, background 0.2s;
-        }
-
-        button:hover {
-            background: #ffe6ec;
-            transform: scale(1.05);
         }
 
         .heart {
-            font-size: 2.5em;
+            font-size: 3em;
             animation: heartbeat 1.5s infinite;
-            margin-top: 30px;
+            margin: 40px 0;
         }
 
-        @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
+        button {
+            margin: 40px 0;
+            background: white;
+            color: var(--pink-accent);
+            border: none;
+            padding: 16px 40px;
+            font-size: 1.2em;
+            font-weight: bold;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.25s ease;
         }
 
-        @keyframes heartbeat {
-            0% { transform: scale(1); }
-            50% { transform: scale(1.2); }
-            100% { transform: scale(1); }
+        button:hover {
+            background: var(--pink-soft);
+            transform: scale(1.08);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.15);
         }
 
         footer {
-            margin-top: 60px;
-            font-size: 0.9em;
-            opacity: 0.8;
+            margin-top: 80px;
+            font-size: 0.95em;
+            opacity: 0.85;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to   { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes heartbeat {
+            0%, 100% { transform: scale(1); }
+            50%      { transform: scale(1.25); }
+        }
+
+        @media (max-width: 600px) {
+            h1 { font-size: 2.4em; }
+            p  { font-size: 1.1em; }
+            button { padding: 14px 30px; font-size: 1.1em; }
         }
     </style>
 </head>
 
 <body>
 
-<div class="container">
-    <h1>Joyeux Anniversaire Mon Amour 🎉❤️</h1>
+    <div class="container">
+        <main>
+            <h1>Joyeux Anniversaire Mon Amour 🎉❤️</h1>
 
-    <p>
-        Aujourd’hui est un jour très spécial,  
-        parce que c’est le jour où la personne la plus merveilleuse est née.  
-        Merci d’être dans ma vie, merci pour ton sourire,  
-        ton amour et tout ce que tu représentes pour moi.
-        <br><br>
-        Cette petite page a été codée spécialement pour toi,  
-        avec tout mon cœur 💻❤️
-    </p>
+            <p>
+                Aujourd’hui est un jour très spécial, parce que c’est le jour où la personne la plus merveilleuse est née.<br><br>
+                
+                Merci d’être dans ma vie, merci pour ton sourire, ton amour et tout ce que tu représentes pour moi.<br><br>
+                
+                Malgré la distance, tu as su si bien gérer notre relation.<br>
+                Malgré les souffrances qu’on traverse, tu n’as jamais abandonné.<br>
+                Tu es une fille de cœur, l’idéale que j’ai tant cherchée.<br><br>
+                
+                Sache que je t’aime non seulement pour ta beauté (car la beauté est éphémère),<br>
+                mais surtout pour ta façon d’être, ton comportement.<br>
+                Surtout, ne change pas… reste toi-même, tout ira bien.<br><br>
+                
+                Qu’Allah nous donne une longue vie pleine de bonheur, de santé,<br>
+                et surtout, inshallah, un jour te voir devenir la maman de mes enfants.<br><br>
+                
+                Ce n’est pas seulement ton anniversaire, c’est aussi une belle occasion de te rappeler<br>
+                que tu es la plus belle chose qui me soit arrivée.<br>
+                Merci d’être toi. Merci d’être à moi.
+            </p>
 
-    <button onclick="surprise()">Clique ici pour ta surprise 🎁</button>
+            <button onclick="surprise()">Clique ici pour ta surprise 🎁</button>
 
-    <div class="heart">❤️</div>
+            <div class="heart">❤️</div>
+        </main>
 
-    <footer>
-        Codé avec amour par Mamadou 💖
-    </footer>
-</div>
+        <footer>
+            Codé avec tout mon amour par Mamadou 💖
+        </footer>
+    </div>
 
-<script>
-    function surprise() {
-        alert("Tu es mon plus beau cadeau. Je t’aime infiniment ❤️");
-    }
-</script>
+    <script>
+        function surprise() {
+            // Alert optionnel (tu peux le commenter si tu préfères juste les confettis)
+            alert("Tu es mon plus beau cadeau.\nJe t’aime infiniment Maïmouna Savané ❤️");
+
+            // Confettis explosion principale
+            confetti({
+                particleCount: 150,
+                spread: 70,
+                origin: { y: 0.6 },
+                colors: ['#ff758c', '#ff7eb3', '#ff4e78', '#ffe6ec', '#ffffff', '#ffd700'],
+                ticks: 300,
+                gravity: 0.5,
+                scalar: 1.2
+            });
+
+            // Rafales latérales pour plus d'effet (optionnel)
+            setTimeout(() => {
+                confetti({ particleCount: 100, angle: 60, spread: 55, origin: { x: 0 } });
+                confetti({ particleCount: 100, angle: 120, spread: 55, origin: { x: 1 } });
+            }, 200);
+        }
+    </script>
 
 </body>
 </html>
