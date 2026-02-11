@@ -29,28 +29,54 @@
             text-align: center;
             min-height: 100vh;
             line-height: 1.6;
+            overflow: hidden; /* empêche le scroll inutile */
             position: relative;
-            overflow-x: hidden;
         }
 
-        /* Fond cœurs subtils */
-        .hearts-bg {
-            position: absolute;
+        /* Conteneur des cœurs flottants */
+        .floating-hearts {
+            position: fixed;
             inset: 0;
             pointer-events: none;
-            opacity: 0.12;
-            background-image: 
-                radial-gradient(circle at 15% 25%, white 2px, transparent 2px),
-                radial-gradient(circle at 35% 75%, white 1.5px, transparent 1.5px),
-                radial-gradient(circle at 65% 35%, white 2px, transparent 2px),
-                radial-gradient(circle at 85% 65%, white 1.8px, transparent 1.8px);
-            background-size: 120px 120px;
-            animation: drift 35s linear infinite;
+            z-index: 0;
         }
 
-        @keyframes drift {
-            0% { background-position: 0 0; }
-            100% { background-position: 150px 150px; }
+        .heart-float {
+            position: absolute;
+            font-size: 1.5rem;
+            opacity: 0;
+            color: rgba(255, 255, 255, 0.7);
+            animation: floatHeart linear infinite;
+            user-select: none;
+        }
+
+        /* Génère plusieurs cœurs avec des délais, tailles et positions aléatoires */
+        .heart-float:nth-child(1)  { left: 10%; animation-duration: 18s; animation-delay: 0s; }
+        .heart-float:nth-child(2)  { left: 25%; animation-duration: 22s; animation-delay: 2s; font-size: 2rem; }
+        .heart-float:nth-child(3)  { left: 40%; animation-duration: 15s; animation-delay: 5s; }
+        .heart-float:nth-child(4)  { left: 55%; animation-duration: 20s; animation-delay: 1s; font-size: 1.8rem; }
+        .heart-float:nth-child(5)  { left: 70%; animation-duration: 25s; animation-delay: 4s; }
+        .heart-float:nth-child(6)  { left: 85%; animation-duration: 19s; animation-delay: 7s; font-size: 2.2rem; }
+        .heart-float:nth-child(7)  { left: 15%; animation-duration: 21s; animation-delay: 9s; }
+        .heart-float:nth-child(8)  { left: 35%; animation-duration: 16s; animation-delay: 3s; font-size: 1.6rem; }
+        .heart-float:nth-child(9)  { left: 60%; animation-duration: 23s; animation-delay: 6s; }
+        .heart-float:nth-child(10) { left: 80%; animation-duration: 17s; animation-delay: 8s; font-size: 2rem; }
+
+        @keyframes floatHeart {
+            0% {
+                opacity: 0;
+                transform: translateY(100vh) rotate(0deg);
+            }
+            10% {
+                opacity: 0.8;
+            }
+            90% {
+                opacity: 0.8;
+            }
+            100% {
+                opacity: 0;
+                transform: translateY(-20vh) rotate(360deg);
+            }
         }
 
         .container {
@@ -104,7 +130,6 @@
             opacity: 0.85;
         }
 
-        /* Animations */
         @keyframes fadeIn {
             from { opacity: 0; transform: translateY(20px); }
             to   { opacity: 1; transform: translateY(0); }
@@ -119,14 +144,26 @@
             h1 { font-size: 2.4em; }
             p  { font-size: 1.1em; }
             button { padding: 14px 30px; font-size: 1.1em; }
+            .heart-float { font-size: 1.2rem !important; }
         }
     </style>
 </head>
 
 <body>
 
-    <!-- Fond cœurs subtils -->
-    <div class="hearts-bg"></div>
+    <!-- Cœurs qui flottent -->
+    <div class="floating-hearts">
+        <div class="heart-float">❤️</div>
+        <div class="heart-float">💗</div>
+        <div class="heart-float">❤️</div>
+        <div class="heart-float">💖</div>
+        <div class="heart-float">❤️</div>
+        <div class="heart-float">💕</div>
+        <div class="heart-float">❤️</div>
+        <div class="heart-float">💞</div>
+        <div class="heart-float">❤️</div>
+        <div class="heart-float">💓</div>
+    </div>
 
     <div class="container">
         <main>
@@ -165,10 +202,8 @@
 
     <script>
         function surprise() {
-            // Alert
             alert("Tu es mon plus beau cadeau.\nJe t’aime infiniment Maïmouna Savané ❤️");
 
-            // Confettis explosion principale
             confetti({
                 particleCount: 150,
                 spread: 70,
@@ -179,7 +214,6 @@
                 scalar: 1.2
             });
 
-            // Rafales latérales
             setTimeout(() => {
                 confetti({ particleCount: 100, angle: 60, spread: 55, origin: { x: 0 } });
                 confetti({ particleCount: 100, angle: 120, spread: 55, origin: { x: 1 } });
