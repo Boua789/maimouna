@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Joyeux Anniversaire ❤️</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(135deg, #ff758c, #ff7eb3);
+            font-family: 'Segoe UI', Tahoma, sans-serif;
+            color: white;
+            text-align: center;
+        }
+
+        .container {
+            padding: 60px 20px;
+            max-width: 800px;
+            margin: auto;
+        }
+
+        h1 {
+            font-size: 3em;
+            animation: fadeIn 2s ease-in-out;
+        }
+
+        p {
+            font-size: 1.2em;
+            line-height: 1.8;
+            margin-top: 30px;
+        }
+
+        button {
+            margin-top: 40px;
+            background: white;
+            color: #ff4e78;
+            border: none;
+            padding: 15px 35px;
+            font-size: 1.1em;
+            border-radius: 30px;
+            cursor: pointer;
+            transition: transform 0.2s, background 0.2s;
+        }
+
+        button:hover {
+            background: #ffe6ec;
+            transform: scale(1.05);
+        }
+
+        .heart {
+            font-size: 2.5em;
+            animation: heartbeat 1.5s infinite;
+            margin-top: 30px;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @keyframes heartbeat {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.2); }
+            100% { transform: scale(1); }
+        }
+
+        footer {
+            margin-top: 60px;
+            font-size: 0.9em;
+            opacity: 0.8;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="container">
+    <h1>Joyeux Anniversaire Mon Amour 🎉❤️</h1>
+
+    <p>
+        Aujourd’hui est un jour très spécial,  
+        parce que c’est le jour où la personne la plus merveilleuse est née.  
+        Merci d’être dans ma vie, merci pour ton sourire,  
+        ton amour et tout ce que tu représentes pour moi.
+        <br><br>
+        Cette petite page a été codée spécialement pour toi,  
+        avec tout mon cœur 💻❤️
+    </p>
+
+    <button onclick="surprise()">Clique ici pour ta surprise 🎁</button>
+
+    <div class="heart">❤️</div>
+
+    <footer>
+        Codé avec amour par Mamadou 💖
+    </footer>
+</div>
+
+<script>
+    function surprise() {
+        alert("Tu es mon plus beau cadeau. Je t’aime infiniment ❤️");
+    }
+</script>
+
+</body>
+</html>
